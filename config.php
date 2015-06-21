@@ -20,6 +20,7 @@ $cas_port = 443;
 // Cassowary Setting                    //
 //////////////////////////////////////////
 
-$cassowary_users = ['thoupt', 'choupt'];
+// Default list of users with global access
+$cassowary_users = ['thoupt', 'bmiller2'];
 
 ?>
