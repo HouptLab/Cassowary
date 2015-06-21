@@ -5,14 +5,14 @@
  *
  * @author   Chuck Houpt <chuck@habilis.net>
  * @license  http://www.apache.org/licenses/LICENSE-2.0  Apache License 2.0
- * @link     http://wiki.jasig.org/display/CASC/phpCAS
  */
 
-// Load the settings from the central config file
+// Load the settings
 require_once 'config.php';
-// Load the CAS lib
-require_once $phpcas_path . '/CAS.php';
 
+// Load the CAS lib and any other dependencies
+require_once 'vendor/autoload.php';
+	
 // Enable debugging
 phpCAS::setDebug();
 
@@ -49,13 +49,26 @@ if (isset($_REQUEST['logout'])) {
 
 $file = file_get_contents('../' . $_REQUEST['url']);
 
+	
 if ($file !== FALSE) {
-	echo $file;
-	echo "<pre>Cassowary Debug Info\nPath: ".$_REQUEST['url']
-	."\nUser: ".phpCAS::getUser()
-	."\n<a href='?logout'>Logout</a></pre>";
+	// TODO determine per-file user list
+	
+	if (in_array(phpCAS::getUser(), $cassowary_users)) {
+		echo $file;
+		echo "<pre>Cassowary Debug Info\nPath: " . $_REQUEST['url']
+		. "\nUser: " . phpCAS::getUser()
+		. "\n<a href='?logout'>Logout</a> <a href='?login'>Re-Login</a></pre>";
+	} else {
+		http_response_code(403);
+		echo '<html><head><title>403 Forbidden</title></head><body><h1>Access Forbidden</h1>'
+			. '<p>Access to the requested URL /'
+			. $_REQUEST['url']
+			. ' is forbidden for the user: '
+			. phpCAS::getUser()
+			. "</p><p><a href='?logout'>Logout</a></p>";
+	}
 } else {
-	header("HTTP/1.0 404 Not Found");
+	http_response_code(404);
 	echo '<html><head><title>404 Not Found</title></head><body><h1>Not Found</h1><p>The requested URL /'
 	. $_REQUEST['url']
 	. ' was not found on this server.</p></body></html>';
