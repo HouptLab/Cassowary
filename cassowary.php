@@ -52,6 +52,8 @@ if ($file !== FALSE) {
 	
 	// Extract additional cassowary-users from meta elements
 	
+	libxml_use_internal_errors(true); // suppress ill-formed HTML warnings
+	
 	$doc = new DOMDocument();
 	$doc->loadHTML($file);
 	$xpath = new DOMXPath($doc);
