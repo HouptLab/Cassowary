@@ -29,7 +29,6 @@ phpCAS::client(CAS_VERSION_2_0, $cas_host, $cas_port, $cas_context);
 phpCAS::setNoCasServerValidation();
 
 
-
 // force CAS authentication, if not already authenticated
 
 if ( ! phpCAS::isAuthenticated()) {
@@ -48,15 +47,26 @@ if (isset($_REQUEST['logout'])) {
 // and the user's login name can be read with phpCAS::getUser().
 
 $file = file_get_contents('../' . $_REQUEST['url']);
-
 	
 if ($file !== FALSE) {
-	// TODO determine per-file user list
+	
+	// Extract additional cassowary-users from meta elements
+	
+	$doc = new DOMDocument();
+	$doc->loadHTML($file);
+	$xpath = new DOMXPath($doc);
+	$meta = $xpath->query("//meta[@name='cassowary-users']/@content");
+	foreach ($meta as $content) {
+		$cassowary_users  = array_merge($cassowary_users, preg_split("/\s+/", $content->value));
+	}
+	
+	// Check that the current user is allowed access
 	
 	if (in_array(phpCAS::getUser(), $cassowary_users)) {
 		echo $file;
 		echo "<pre>Cassowary Debug Info\nPath: " . $_REQUEST['url']
 		. "\nUser: " . phpCAS::getUser()
+		. "\nACL: " . implode(' ', $cassowary_users)
 		. "\n<a href='?logout'>Logout</a> <a href='?login'>Re-Login</a></pre>";
 	} else {
 		http_response_code(403);
