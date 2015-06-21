@@ -70,18 +70,11 @@ if ($file !== FALSE) {
 		. "\n<a href='?logout'>Logout</a> <a href='?login'>Re-Login</a></pre>";
 	} else {
 		http_response_code(403);
-		echo '<html><head><title>403 Forbidden</title></head><body><h1>Access Forbidden</h1>'
-			. '<p>Access to the requested URL /'
-			. $_REQUEST['url']
-			. ' is forbidden for the user: '
-			. phpCAS::getUser()
-			. "</p><p><a href='?logout'>Logout</a></p>";
+		include('403.php');
 	}
 } else {
 	http_response_code(404);
-	echo '<html><head><title>404 Not Found</title></head><body><h1>Not Found</h1><p>The requested URL /'
-	. $_REQUEST['url']
-	. ' was not found on this server.</p></body></html>';
+	include('404.php');
 }
 
 ?>
