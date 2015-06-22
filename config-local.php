@@ -26,4 +26,3 @@ $cas_port = 8443;
 
 $cassowary_users = ['thoupt', 'choupt'];
 
-?>

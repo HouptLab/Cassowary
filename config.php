@@ -22,5 +22,3 @@ $cas_port = 443;
 
 // Default list of users with global access
 $cassowary_users = ['thoupt', 'bmiller2'];
-
-?>
