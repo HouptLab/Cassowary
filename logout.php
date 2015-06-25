@@ -12,7 +12,7 @@ if (phpCAS::isAuthenticated()) {
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>403 Forbidden</title>
+		<title>Logged Out</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<style>
 			html {
