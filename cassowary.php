@@ -21,7 +21,7 @@ if ( ! phpCAS::isAuthenticated()) {
 if (isset($_REQUEST['logout'])) {
 	phpCAS::logout();
 } elseif (isset($_REQUEST['login'])) {
-	phpCAS::renewAuthentication();
+	phpCAS::logoutWithRedirectService($_SERVER["SCRIPT_URI"]);
 }
 
 // at this step, the user has been authenticated by the CAS server
