@@ -20,6 +20,6 @@
 		<h1>Access Forbidden</h1>
 		<p>Access to the requested URL /<?php echo $_REQUEST['url'] ?>
 		   is forbidden for the user: <?php echo phpCAS::getUser() ?></p>
-		<p><a href='?logout'>Logout</a></p>
+		<p><a href='/logout/'>Logout</a></p>
 	</body>
 </html>
