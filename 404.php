@@ -18,6 +18,6 @@
 	</head>
 	<body>
 		<h1>Not Found</h1>
-		<p>The requested URL /<?php echo $_REQUEST['url'] ?> was not found on this server.</p>
+		<p>The requested URL <?php echo $_SERVER["REQUEST_URI"] ?> was not found on this server.</p>
 	</body>
 </html>
