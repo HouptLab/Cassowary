@@ -52,7 +52,6 @@ if ($file !== FALSE) {
 		. "\nUser: " . phpCAS::getUser()
 		. "\nACL: " . implode(' ', $cassowary_users)
 		. "\n<a href='/logout/'>Logout</a> <a href='?login'>Re-Login</a></pre>";
-		phpinfo();
 	} else {
 		http_response_code(403);
 		include('403.php');
