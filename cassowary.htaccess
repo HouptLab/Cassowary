@@ -1,3 +1,4 @@
 Options +FollowSymlinks
 RewriteEngine On
 RewriteRule ^(.*\.html) /cassowary/cassowary.php?url=$1 [QSA,L]
+RewriteRule ^logout/$	/cassowary/logout.php [QSA,L]

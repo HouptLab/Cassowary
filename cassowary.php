@@ -27,6 +27,7 @@ if (isset($_REQUEST['logout'])) {
 // at this step, the user has been authenticated by the CAS server
 // and the user's login name can be read with phpCAS::getUser().
 
+//TODO check for bad urls
 $file = file_get_contents('../' . $_REQUEST['url']);
 	
 if ($file !== FALSE) {
@@ -47,10 +48,11 @@ if ($file !== FALSE) {
 	
 	if (in_array(phpCAS::getUser(), $cassowary_users)) {
 		echo $file;
-		echo "<pre>Cassowary Debug Info\nPath: " . $_REQUEST['url']
+		echo "<pre>Cassowary Debug Info\nPath: " . $_SERVER["SCRIPT_URI"]
 		. "\nUser: " . phpCAS::getUser()
 		. "\nACL: " . implode(' ', $cassowary_users)
-		. "\n<a href='?logout'>Logout</a> <a href='?login'>Re-Login</a></pre>";
+		. "\n<a href='/logout/'>Logout</a> <a href='?login'>Re-Login</a></pre>";
+		phpinfo();
 	} else {
 		http_response_code(403);
 		include('403.php');
