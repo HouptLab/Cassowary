@@ -27,10 +27,14 @@ if (isset($_REQUEST['logout'])) {
 // at this step, the user has been authenticated by the CAS server
 // and the user's login name can be read with phpCAS::getUser().
 
-//TODO check for bad urls
-$file = file_get_contents('../' . $_SERVER["REDIRECT_URL"]);
-	
-if ($file !== FALSE) {
+$root = realpath('../');
+$path = realpath('../' . $_SERVER["REDIRECT_URL"]);
+
+// check that path exists and is a sub-path of root
+
+if ($path !== FALSE && substr($path, 0, strlen($root)) === $root) {
+
+	$file = file_get_contents( $path );
 	
 	// Extract additional cassowary-users from meta elements
 	
