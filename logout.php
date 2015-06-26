@@ -3,7 +3,7 @@
 // Setup
 require_once '../cassowary/cassowary-setup.php';
 
-// force CAS authentication
+// logout if necessary
 
 if (phpCAS::isAuthenticated()) {
 	phpCAS::logoutWithRedirectService($_SERVER["SCRIPT_URI"]);
@@ -15,11 +15,13 @@ if (phpCAS::isAuthenticated()) {
 		<title>Logged Out</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<style>
+<?php if ($cassowary_show_pics): ?>
 			html {
 				height: 100%;
 				background: url(/cassowary/casuarius-egg.jpg) no-repeat center center;
 				background-size: cover;
 			}
+<?php endif ?>
 			body {
 				max-width: 40em;
 				margin: auto;

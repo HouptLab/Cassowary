@@ -22,3 +22,6 @@ $cas_port = 443;
 
 // Default list of users with global access
 $cassowary_users = ['thoupt', 'bmiller2'];
+
+// Show or hide 19th century cassowary prints
+$cassowary_show_pics = true;
