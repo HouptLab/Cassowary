@@ -28,7 +28,7 @@ if (isset($_REQUEST['logout'])) {
 // and the user's login name can be read with phpCAS::getUser().
 
 //TODO check for bad urls
-$file = file_get_contents('../' . $_REQUEST['url']);
+$file = file_get_contents('../' . $_SERVER["REDIRECT_URL"]);
 	
 if ($file !== FALSE) {
 	
