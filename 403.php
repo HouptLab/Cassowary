@@ -14,7 +14,7 @@
 			body {
 				max-width: 40em;
 				margin: auto;
-				background-color: rgba(245,241,230,0.5);
+				background-color: rgba(255,255,255,0.5);
 			}
 		</style>
 	</head>
