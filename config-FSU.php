@@ -28,3 +28,6 @@ $cassowary_users = {{ site.administrators | jsonify }};
 
 // Show or hide 19th century cassowary prints
 $cassowary_show_pics = true;
+
+// Show or hide page debug info
+$cassowary_show_debug = false;

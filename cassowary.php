@@ -52,16 +52,18 @@ if ($path !== FALSE && substr($path, 0, strlen($root)) === $root) {
 	
 	if (in_array(phpCAS::getUser(), $cassowary_users)) {
 		echo $file;
-		echo "<pre>";
-		echo "Cassowary Debug Info\nPath: " . $_SERVER["SCRIPT_URI"]
-		. "\nUser: " . phpCAS::getUser()
-		. "\nACL: " . implode(' ', $cassowary_users)
-		. "\n<a href='/logout/'>Logout</a> <a href='?login'>Re-Login</a>";
-		if (phpCAS::hasAttributes()) {
-			echo "\nAttributes:\n";
-			print_r (phpCAS::getAttributes());
+		if ($cassowary_show_debug) {
+			echo "<pre>";
+			echo "Cassowary Debug Info\nPath: " . $_SERVER["SCRIPT_URI"]
+			. "\nUser: " . phpCAS::getUser()
+			. "\nACL: " . implode(' ', $cassowary_users)
+			. "\n<a href='/logout/'>Logout</a> <a href='?login'>Re-Login</a>";
+			if (phpCAS::hasAttributes()) {
+				echo "\nAttributes:\n";
+				print_r (phpCAS::getAttributes());
+			}
+			echo "</pre>";
 		}
-		echo "</pre>";
 	} else {
 		http_response_code(403);
 		include('403.php');
