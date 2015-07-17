@@ -65,10 +65,10 @@ if ($path !== FALSE && substr($path, 0, strlen($root)) === $root) {
 			echo "</pre>";
 		}
 	} else {
-		http_response_code(403);
+		header('HTTP/1.1 403 Forbidden'); // http_response_code(403);
 		include('403.php');
 	}
 } else {
-	http_response_code(404);
+	header('HTTP/1.1 404 Not Found'); // http_response_code(404);
 	include('404.php');
 }
