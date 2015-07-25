@@ -7,7 +7,7 @@
 <?php if ($cassowary_show_pics): ?>
 			html {
 				height: 100%;
-				background: url(/cassowary/casuarius.jpg) no-repeat center center;
+				background: url(<?php echo $cassowary_dir ?>/casuarius.jpg) no-repeat center center;
 				background-size: cover;
 			}
 <?php endif ?>
@@ -22,6 +22,6 @@
 		<h1>Access Forbidden</h1>
 		<p>Access to the requested URL <?php echo $_SERVER["REQUEST_URI"] ?>
 		   is forbidden for the user: <?php echo phpCAS::getUser() ?></p>
-		<p><a href='/logout/'>Logout</a></p>
+		<p><a href='<?php echo $cassowary_parent ?>/logout/'>Logout</a></p>
 	</body>
 </html>

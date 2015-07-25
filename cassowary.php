@@ -27,8 +27,8 @@ if (isset($_REQUEST['logout'])) {
 // at this step, the user has been authenticated by the CAS server
 // and the user's login name can be read with phpCAS::getUser().
 
-$root = realpath('../');
-$path = realpath('../' . $_SERVER["REDIRECT_URL"]);
+$root = $_SERVER["DOCUMENT_ROOT"];
+$path = realpath($root . $_SERVER["REDIRECT_URL"]);
 
 // check that path exists and is a sub-path of root
 

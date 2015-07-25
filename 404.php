@@ -7,7 +7,7 @@
 <?php if ($cassowary_show_pics): ?>
 			html {
 				height: 100%;
-				background: url(/cassowary/casuarius.jpg) no-repeat center center;
+				background: url(<?php echo $cassowary_dir ?>/casuarius.jpg) no-repeat center center;
 				background-size: cover;
 			}
 <?php endif ?>

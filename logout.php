@@ -1,7 +1,7 @@
 <?php
 
 // Setup
-require_once '../cassowary/cassowary-setup.php';
+require_once 'cassowary-setup.php';
 
 // logout if necessary
 
@@ -20,7 +20,7 @@ if (phpCAS::isAuthenticated()) {
 <?php if ($cassowary_show_pics): ?>
 			html {
 				height: 100%;
-				background: url(/cassowary/casuarius-egg.jpg) no-repeat center center;
+				background: url(<?php echo $cassowary_dir ?>/casuarius-egg.jpg) no-repeat center center;
 				background-size: cover;
 			}
 <?php endif ?>
@@ -34,7 +34,7 @@ if (phpCAS::isAuthenticated()) {
 	<body>
 		<h1>Logout successful</h1>
 		<p>You have successfully logged out.
-		<P><a href="/login/">Click here to login to <strong><?php echo $_SERVER["HTTP_HOST"] ?></strong> again</a>
+		<P><a href="<?php echo $cassowary_parent ?>/login/">Click here to login to <strong><?php echo $_SERVER["HTTP_HOST"] ?></strong> again</a>
 		<p>For security reasons, exit your web browser.
 	</body>
 </html>

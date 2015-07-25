@@ -10,6 +10,10 @@
 // Load the settings
 require_once 'config.php';
 
+$cassowary_dir = dirname($_SERVER['SCRIPT_NAME']);
+$cassowary_parent = dirname($cassowary_dir);
+$cassowary_parent = $cassowary_parent == '/' ? '' : $cassowary_parent;
+
 // Load the CAS lib and any other dependencies
 require_once 'vendor/autoload.php';
 	
