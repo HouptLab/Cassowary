@@ -7,7 +7,7 @@ require_once 'cassowary-setup.php';
 
 if (phpCAS::isAuthenticated()) {
 	phpCAS::logoutWithRedirectService(
-		($_SERVER["'HTTPS'"] ? "https://" : "http://" )
+		($_SERVER["HTTPS"] ? "https://" : "http://" )
 		. $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"]);
 }
 ?>
