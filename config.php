@@ -16,7 +16,7 @@ $cas_context = '/cas';
 $cas_port = 443;
 
 // Path to the ca chain that issued the cas server certificate
-//$cas_server_ca_cert_path = '/path/to/cachain.pem';
+$cas_server_ca_cert_path = __DIR__ . '/COMODOHigh-AssuranceSecureServerCA.crt';
 
 //////////////////////////////////////////
 // Cassowary Setting                    //
