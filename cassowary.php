@@ -50,7 +50,7 @@ if ($path !== FALSE && substr($path, 0, strlen($root)) === $root) {
 	
 	// Check that the current user is allowed access
 	
-	if (in_array(phpCAS::getUser(), $cassowary_users)) {
+	if (in_array(strtolower(phpCAS::getUser()), $cassowary_users)) {
 		echo $file;
 		if ($cassowary_show_debug) {
 			echo "<pre>";
