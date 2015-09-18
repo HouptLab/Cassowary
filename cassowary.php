@@ -35,22 +35,35 @@ $path = realpath($root . $_SERVER["REDIRECT_URL"]);
 if ($path !== FALSE && substr($path, 0, strlen($root)) === $root) {
 
 	$file = file_get_contents( $path );
+
+	if (pathinfo($path, PATHINFO_EXTENSION) === "pdf") {
+		$file_contenttype = "application/pdf";	
+		
+		// Extract additional cassowary-users from .cassowary_users
+		$dotfile = file_get_contents(dirname($path) . '/.cassowary_users');
+		if ($dotfile) {
+			$cassowary_users  = array_merge($cassowary_users, preg_split("/\s+/", $dotfile));
+		}
+	} else {
+		$file_contenttype = "text/html";
 	
-	// Extract additional cassowary-users from meta elements
+		// Extract additional cassowary-users from meta elements
 	
-	libxml_use_internal_errors(true); // suppress ill-formed HTML warnings
+		libxml_use_internal_errors(true); // suppress ill-formed HTML warnings
 	
-	$doc = new DOMDocument();
-	$doc->loadHTML($file);
-	$xpath = new DOMXPath($doc);
-	$meta = $xpath->query("//meta[@name='cassowary-users']/@content");
-	foreach ($meta as $content) {
-		$cassowary_users  = array_merge($cassowary_users, preg_split("/\s+/", $content->value));
+		$doc = new DOMDocument();
+		$doc->loadHTML($file);
+		$xpath = new DOMXPath($doc);
+		$meta = $xpath->query("//meta[@name='cassowary-users']/@content");
+		foreach ($meta as $content) {
+			$cassowary_users  = array_merge($cassowary_users, preg_split("/\s+/", $content->value));
+		}
 	}
 	
 	// Check that the current user is allowed access
 	
 	if (in_array(strtolower(phpCAS::getUser()), $cassowary_users)) {
+		header('Content-Type: ' . $file_contenttype);
 		echo $file;
 		if ($cassowary_show_debug) {
 			echo "<pre>";
@@ -64,10 +77,12 @@ if ($path !== FALSE && substr($path, 0, strlen($root)) === $root) {
 			}
 			echo "</pre>";
 		}
+	
 	} else {
 		header('HTTP/1.1 403 Forbidden'); // http_response_code(403);
 		include('403.php');
 	}
+	
 } else {
 	header('HTTP/1.1 404 Not Found'); // http_response_code(404);
 	include('404.php');
