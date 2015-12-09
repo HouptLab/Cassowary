@@ -35,6 +35,7 @@ $path = realpath($root . $_SERVER["REDIRECT_URL"]);
 if ($path !== FALSE && substr($path, 0, strlen($root)) === $root) {
 
 	$file = file_get_contents( $path );
+	$file_contentlength = filesize( $path );
 
 	if (pathinfo($path, PATHINFO_EXTENSION) === "pdf") {
 		$file_contenttype = "application/pdf";	
@@ -64,6 +65,7 @@ if ($path !== FALSE && substr($path, 0, strlen($root)) === $root) {
 	
 	if (in_array(strtolower(phpCAS::getUser()), $cassowary_users)) {
 		header('Content-Type: ' . $file_contenttype);
+		header("Content-Length: " . $file_contentlength);
 		echo $file;
 		if ($cassowary_show_debug) {
 			echo "<pre>";
