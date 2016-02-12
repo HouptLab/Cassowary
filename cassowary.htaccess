@@ -1,0 +1,9 @@
+Options +FollowSymlinks
+RewriteEngine On
+
+RewriteRule ^(.*\.html) /cassowary/cassowary.php [QSA,L]
+RewriteRule ^logout/$	/cassowary/logout.php [QSA,L]
+
+RewriteRule ^cassowary.js$ /cassowary/cassowary.js.php [L]
+
+RewriteRule ^cassowary.json$ /cassowary/cassowary.json.php [L]
