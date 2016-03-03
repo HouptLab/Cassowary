@@ -16,6 +16,7 @@ if (phpCAS::isAuthenticated()) {
 	<head>
 		<title>Logged Out</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="robots" content="noindex">
 		<style>
 <?php if ($cassowary_show_pics): ?>
 			html {
