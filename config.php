@@ -24,8 +24,7 @@ $cas_port = 443;
 
 // Default list of users with global access
 // note: rely on the fact that JSON string lists are PHP compatible
-//$cassowary_users = {{ site.administrators | jsonify }};
-$cassowary_users = array('{{ site.administrators | join: "', '" }}');
+$cassowary_users = {{ site.administrators | jsonify }};
 
 // Show or hide 19th century cassowary prints
 $cassowary_show_pics = true;
