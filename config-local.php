@@ -24,7 +24,7 @@ $cas_port = 8443;
 // Cassowary Setting                    //
 //////////////////////////////////////////
 
-$cassowary_users = array('thoupt', 'choupt');
+$cassowary_users = ['thoupt', 'choupt'];
 
 // Show or hide 19th century cassowary prints
 $cassowary_show_pics = true;

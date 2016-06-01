@@ -81,11 +81,11 @@ if ($path !== FALSE && substr($path, 0, strlen($root)) === $root) {
 		}
 	
 	} else {
-		header('HTTP/1.1 403 Forbidden'); // http_response_code(403);
+		http_response_code(403);
 		include('403.php');
 	}
 	
 } else {
-	header('HTTP/1.1 404 Not Found'); // http_response_code(404);
+	http_response_code(404);
 	include('404.php');
 }
