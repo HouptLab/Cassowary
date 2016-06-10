@@ -7,10 +7,10 @@
 ///////////////////////////////////////
 
 // Full Hostname of your CAS Server
-$cas_host = 'cas.fsu.edu';
+$cas_host = '{{ site.cas_host }}';
 
 // Context of the CAS Server
-$cas_context = '/cas';
+$cas_context = '{{ site.cas_context }}';
 
 // Port of your CAS server. Normally for a https server it's 443
 $cas_port = 443;
