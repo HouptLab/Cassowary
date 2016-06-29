@@ -27,6 +27,8 @@ if (isset($_REQUEST['logout'])) {
 // at this step, the user has been authenticated by the CAS server
 // and the user's login name can be read with phpCAS::getUser().
 
+$cassowary_all_users = false;	
+
 $root = $_SERVER["DOCUMENT_ROOT"];
 $path = realpath($root . $_SERVER["REDIRECT_URL"]);
 
@@ -55,15 +57,27 @@ if ($path !== FALSE && substr($path, 0, strlen($root)) === $root) {
 		$doc = new DOMDocument();
 		$doc->loadHTML($file);
 		$xpath = new DOMXPath($doc);
-		$meta = $xpath->query("//meta[@name='cassowary-users']/@content");
-		foreach ($meta as $content) {
-			$cassowary_users  = array_merge($cassowary_users, preg_split("/\s+/", $content->value));
+		$meta = $xpath->query("//meta[starts-with(@name,'cassowary-')]");
+
+		foreach ($meta as $m) {
+			$content = $m->getAttribute('content');
+			switch ($m->getAttribute('name')) {
+			case 'cassowary-users':
+				$cassowary_users = array_merge($cassowary_users, preg_split("/\s+/", $content));
+				break;
+			case 'cassowary-only-users':
+				$cassowary_users = preg_split("/\s+/", $content);
+				break 2;
+			case 'cassowary-all-users':
+				$cassowary_all_users = true;
+				break 2;
+			}
 		}
 	}
 	
 	// Check that the current user is allowed access
 	
-	if (in_array(strtolower(phpCAS::getUser()), $cassowary_users)) {
+	if ($cassowary_all_users || in_array(strtolower(phpCAS::getUser()), $cassowary_users)) {
 		header('Content-Type: ' . $file_contenttype);
 		header("Content-Length: " . $file_contentlength);
 		echo $file;
