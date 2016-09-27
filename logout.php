@@ -6,9 +6,14 @@ require_once 'cassowary-setup.php';
 // logout if necessary
 
 if (phpCAS::isAuthenticated()) {
-	phpCAS::logoutWithRedirectService(
-		(empty($_SERVER["HTTPS"]) ? "http://" : "https://" )
-		. $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"]);
+	if (isset($_REQUEST['service'])) {
+		$service = $_REQUEST['service'];
+	} else {
+		$service = (empty($_SERVER["HTTPS"]) ? "http://" : "https://" )
+				  . $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"];
+	}
+
+	phpCAS::logoutWithRedirectService($service);
 }
 ?>
 <!DOCTYPE html>
