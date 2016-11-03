@@ -36,7 +36,6 @@ $path = realpath($root . $_SERVER["REDIRECT_URL"]);
 
 if ($path !== FALSE && substr($path, 0, strlen($root)) === $root) {
 
-	$file = file_get_contents( $path );
 	$file_contentlength = filesize( $path );
 
 	if (pathinfo($path, PATHINFO_EXTENSION) === "pdf") {
@@ -51,6 +50,7 @@ if ($path !== FALSE && substr($path, 0, strlen($root)) === $root) {
 		$file_contenttype = "text/html";
 	
 		// Extract additional cassowary-users from meta elements
+		$file = file_get_contents( $path );
 	
 		libxml_use_internal_errors(true); // suppress ill-formed HTML warnings
 	
@@ -80,7 +80,7 @@ if ($path !== FALSE && substr($path, 0, strlen($root)) === $root) {
 	if ($cassowary_all_users || in_array(strtolower(phpCAS::getUser()), $cassowary_users)) {
 		header('Content-Type: ' . $file_contenttype);
 		header("Content-Length: " . $file_contentlength);
-		echo $file;
+		readfile($path);
 		if ($cassowary_show_debug) {
 			echo "<pre>";
 			echo "Cassowary Debug Info\nPath: " . $_SERVER["SCRIPT_URI"]
