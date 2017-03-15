@@ -42,8 +42,8 @@ if ($path !== FALSE && substr($path, 0, strlen($root)) === $root) {
 		$file_contenttype = "application/pdf";	
 		
 		// Extract additional cassowary-users from .cassowary_users
-		$dotfile = file_get_contents(dirname($path) . '/.cassowary_users');
-		if ($dotfile) {
+		if (file_exists(dirname($path) . '/.cassowary_users')
+		&& $dotfile = file_get_contents(dirname($path) . '/.cassowary_users')) {
 			$cassowary_users  = array_merge($cassowary_users, preg_split("/\s+/", $dotfile));
 		}
 	} else {
