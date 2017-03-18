@@ -46,6 +46,31 @@ if ($path !== FALSE && substr($path, 0, strlen($root)) === $root) {
 		&& $dotfile = file_get_contents(dirname($path) . '/.cassowary_users')) {
 			$cassowary_users  = array_merge($cassowary_users, preg_split("/\s+/", $dotfile));
 		}
+		
+		// Extract additional cassowary-users from PDF
+		if (isset($cassowary_pdf_property)) {
+			$parser = new \Smalot\PdfParser\Parser();
+			$pdf    = $parser->parseFile($path);
+			
+			// Check details (properties)
+			$details = $pdf->getDetails();
+			if (isset($details[$cassowary_pdf_property])) {
+				$cassowary_users = array_merge($cassowary_users, preg_split("/\s+/", $details[$cassowary_pdf_property]));
+			}
+			
+			// Check metadata
+			$dict = $pdf->getDictionary();
+			if (isset($dict['Metadata'])) {
+				foreach ($dict['Metadata'] as $id) {
+					$xmpmeta = new SimpleXMLElement($pdf->getObjectById($id)->getContent());
+					$xmpmeta->registerXPathNamespace('pdfx', 'http://ns.adobe.com/pdfx/1.3/');
+					foreach ($xmpmeta->xpath("//pdfx:$cassowary_pdf_property") as $users) {
+						$cassowary_users = array_merge($cassowary_users, preg_split("/\s+/", $users));
+					}
+				}
+			}
+		}
+ 
 	} else {
 		$file_contenttype = "text/html";
 	

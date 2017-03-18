@@ -26,6 +26,9 @@ $cas_port = 443;
 // note: rely on the fact that JSON string lists are PHP compatible
 $cassowary_users = {{ site.administrators | jsonify }};
 
+// PDF property used to store additional users
+//$cassowary_pdf_property = 'cassowary-users';
+
 // Show or hide 19th century cassowary prints
 $cassowary_show_pics = true;
 
