@@ -70,7 +70,8 @@ if ($path !== FALSE && substr($path, 0, strlen($root)) === $root) {
 				}
 			}
 		}
- 
+ 	} elseif (pathinfo($path, PATHINFO_EXTENSION) === "json") {
+ 		$file_contenttype = "application/json";
 	} else {
 		$file_contenttype = "text/html";
 	
