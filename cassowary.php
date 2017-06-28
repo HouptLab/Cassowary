@@ -38,15 +38,15 @@ if ($path !== FALSE && substr($path, 0, strlen($root)) === $root) {
 
 	$file_contentlength = filesize( $path );
 
+	// Extract additional cassowary-users from .cassowary_users
+	if (file_exists(dirname($path) . '/.cassowary_users')
+	&& $dotfile = file_get_contents(dirname($path) . '/.cassowary_users')) {
+		$cassowary_users  = array_merge($cassowary_users, preg_split("/\s+/", $dotfile));
+	}
+
 	if (pathinfo($path, PATHINFO_EXTENSION) === "pdf") {
 		$file_contenttype = "application/pdf";	
-		
-		// Extract additional cassowary-users from .cassowary_users
-		if (file_exists(dirname($path) . '/.cassowary_users')
-		&& $dotfile = file_get_contents(dirname($path) . '/.cassowary_users')) {
-			$cassowary_users  = array_merge($cassowary_users, preg_split("/\s+/", $dotfile));
-		}
-		
+				
 		// Extract additional cassowary-users from PDF
 		if (isset($cassowary_pdf_property)) {
 			$parser = new \Smalot\PdfParser\Parser();
