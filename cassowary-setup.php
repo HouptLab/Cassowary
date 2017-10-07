@@ -10,6 +10,13 @@
 // Load the settings
 if (file_exists('config.php')) require_once 'config.php';
 
+if (isset($cassowary_cas_server)) {
+	$parts = parse_url($cassowary_cas_server);
+	$cas_host = $parts['host'];
+	$cas_context = $parts['path'];
+	$cas_port = isset($parts['port']) ? intval($parts['port']) : 443;
+}
+
 // Default to show 19th century cassowary prints
 if (!isset($cassowary_show_pics)) $cassowary_show_pics = true;
 
