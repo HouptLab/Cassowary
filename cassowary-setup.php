@@ -8,7 +8,7 @@
  */
 
 // Load the settings
-if (file_exists('config.php')) require_once 'config.php';
+if (file_exists(__DIR__ . '/config.php')) require_once 'config.php';
 
 if (getenv('CASSOWARY_CAS_SERVER') !== false) $cassowary_cas_server = getenv('CASSOWARY_CAS_SERVER');
 // TODO: error handle json decode...
