@@ -8,9 +8,7 @@ if ( PHP_SAPI != 'cli-server' ) {
 	die( "This script can only be run by php's cli-server sapi." );
 }
 
-$cas_host = 'cassid.habilis.net';
-$cas_context = '/';
-$cas_port = 443;
+if (! isset($cassowary_cas_server)) $cassowary_cas_server = 'https://cassid.habilis.net/';
 
 if (! isset($router_protect)) $router_protect = '/.*/';
 
