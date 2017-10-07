@@ -27,7 +27,7 @@ if (isset($_REQUEST['logout'])) {
 // at this step, the user has been authenticated by the CAS server
 // and the user's login name can be read with phpCAS::getUser().
 
-$cassowary_all_users = false;	
+if (!isset($cassowary_all_users)) $cassowary_all_users = false;	
 
 $root = $_SERVER["DOCUMENT_ROOT"];
 $path = realpath($root . $_SERVER["REDIRECT_URL"]);
