@@ -8,7 +8,13 @@
  */
 
 // Load the settings
-require_once 'config.php';
+if (file_exists('config.php')) require_once 'config.php';
+
+// Default to show 19th century cassowary prints
+if (!isset($cassowary_show_pics)) $cassowary_show_pics = true;
+
+// Default to hidding page debug info
+if (!isset($cassowary_show_debug)) $cassowary_show_debug = false;
 
 $cassowary_dir = dirname($_SERVER['SCRIPT_NAME']);
 $cassowary_parent = dirname($cassowary_dir);
