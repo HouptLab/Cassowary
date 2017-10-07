@@ -10,6 +10,11 @@
 // Load the settings
 if (file_exists('config.php')) require_once 'config.php';
 
+if (getenv('CASSOWARY_CAS_SERVER') !== false) $cassowary_cas_server = getenv('CASSOWARY_CAS_SERVER');
+// TODO: error handle json decode...
+if (getenv('CASSOWARY_USERS') !== false) $cassowary_users = json_decode(getenv('CASSOWARY_USERS'));
+if (getenv('CASSOWARY_ALL_USERS') !== false) $cassowary_all_users = json_decode(getenv('CASSOWARY_ALL_USERS'));
+
 if (isset($cassowary_cas_server)) {
 	$parts = parse_url($cassowary_cas_server);
 	$cas_host = $parts['host'];
