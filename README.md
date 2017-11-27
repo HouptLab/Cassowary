@@ -1,3 +1,3 @@
 # ![Cassowary](cassowary.png)
 
-![Casuarius](casuarius.jpg)
+![Casuarius](casuarius-splash.jpg)
