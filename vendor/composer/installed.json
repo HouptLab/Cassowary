@@ -1,28 +1,83 @@
 [
     {
-        "name": "tecnickcom/tcpdf",
-        "version": "6.2.12",
-        "version_normalized": "6.2.12.0",
+        "name": "jasig/phpcas",
+        "version": "1.3.5",
+        "version_normalized": "1.3.5.0",
         "source": {
             "type": "git",
-            "url": "https://github.com/tecnickcom/TCPDF.git",
-            "reference": "2f732eaa91b5665274689b1d40b285a7bacdc37f"
+            "url": "https://github.com/apereo/phpCAS.git",
+            "reference": "61c8899c8f91204e8b9135d795461e50fe5c2db0"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/tecnickcom/TCPDF/zipball/2f732eaa91b5665274689b1d40b285a7bacdc37f",
-            "reference": "2f732eaa91b5665274689b1d40b285a7bacdc37f",
+            "url": "https://api.github.com/repos/apereo/phpCAS/zipball/61c8899c8f91204e8b9135d795461e50fe5c2db0",
+            "reference": "61c8899c8f91204e8b9135d795461e50fe5c2db0",
+            "shasum": ""
+        },
+        "require": {
+            "ext-curl": "*",
+            "php": ">=5.4.0"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "~3.7.10"
+        },
+        "time": "2017-04-10T19:12:45+00:00",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.3.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "classmap": [
+                "source/"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "Apache-2.0"
+        ],
+        "authors": [
+            {
+                "name": "Joachim Fritschi",
+                "homepage": "https://wiki.jasig.org/display/~fritschi"
+            },
+            {
+                "name": "Adam Franco",
+                "homepage": "https://wiki.jasig.org/display/~adamfranco"
+            }
+        ],
+        "description": "Provides a simple API for authenticating users against a CAS server",
+        "homepage": "https://wiki.jasig.org/display/CASC/phpCAS",
+        "keywords": [
+            "cas",
+            "jasig"
+        ]
+    },
+    {
+        "name": "tecnickcom/tcpdf",
+        "version": "6.2.13",
+        "version_normalized": "6.2.13.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/tecnickcom/TCPDF.git",
+            "reference": "95c5938aafe4b20df1454dbddb3e5005c0b26f64"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/tecnickcom/TCPDF/zipball/95c5938aafe4b20df1454dbddb3e5005c0b26f64",
+            "reference": "95c5938aafe4b20df1454dbddb3e5005c0b26f64",
             "shasum": ""
         },
         "require": {
             "php": ">=5.3.0"
         },
-        "time": "2015-09-12T10:08:34+00:00",
+        "time": "2017-04-26T08:14:48+00:00",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
             "classmap": [
-                "fonts",
                 "config",
                 "include",
                 "tcpdf.php",
@@ -66,27 +121,28 @@
     },
     {
         "name": "smalot/pdfparser",
-        "version": "v0.10.0",
-        "version_normalized": "0.10.0.0",
+        "version": "v0.11",
+        "version_normalized": "0.11.0.0",
         "source": {
             "type": "git",
             "url": "https://github.com/smalot/pdfparser.git",
-            "reference": "c20bfd40e3d7f40ff4083de5971b2a9e7a839dd5"
+            "reference": "40462c1a662d5fbc8f48d30626695a06f047e0cf"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/smalot/pdfparser/zipball/c20bfd40e3d7f40ff4083de5971b2a9e7a839dd5",
-            "reference": "c20bfd40e3d7f40ff4083de5971b2a9e7a839dd5",
+            "url": "https://api.github.com/repos/smalot/pdfparser/zipball/40462c1a662d5fbc8f48d30626695a06f047e0cf",
+            "reference": "40462c1a662d5fbc8f48d30626695a06f047e0cf",
             "shasum": ""
         },
         "require": {
+            "ext-iconv": "*",
             "php": ">=5.3.0",
             "tecnickcom/tcpdf": "~6.0"
         },
         "require-dev": {
-            "atoum/atoum": "dev-master"
+            "atoum/atoum": "^2.8 | ^3.0"
         },
-        "time": "2017-01-03T14:32:29+00:00",
+        "time": "2017-09-14T12:26:16+00:00",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -100,7 +156,7 @@
         ],
         "authors": [
             {
-                "name": "Sebastien MALOT",
+                "name": "Sébastien MALOT",
                 "email": "sebastien@malot.fr"
             }
         ],
@@ -112,62 +168,6 @@
             "parser",
             "pdf",
             "text"
-        ]
-    },
-    {
-        "name": "jasig/phpcas",
-        "version": "1.3.5",
-        "version_normalized": "1.3.5.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/Jasig/phpCAS.git",
-            "reference": "61c8899c8f91204e8b9135d795461e50fe5c2db0"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/Jasig/phpCAS/zipball/61c8899c8f91204e8b9135d795461e50fe5c2db0",
-            "reference": "61c8899c8f91204e8b9135d795461e50fe5c2db0",
-            "shasum": ""
-        },
-        "require": {
-            "ext-curl": "*",
-            "php": ">=5.4.0"
-        },
-        "require-dev": {
-            "phpunit/phpunit": "~3.7.10"
-        },
-        "time": "2017-04-10T19:12:45+00:00",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "1.3.x-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "classmap": [
-                "source/"
-            ]
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "Apache-2.0"
-        ],
-        "authors": [
-            {
-                "name": "Joachim Fritschi",
-                "homepage": "https://wiki.jasig.org/display/~fritschi"
-            },
-            {
-                "name": "Adam Franco",
-                "homepage": "https://wiki.jasig.org/display/~adamfranco"
-            }
-        ],
-        "description": "Provides a simple API for authenticating users against a CAS server",
-        "homepage": "https://wiki.jasig.org/display/CASC/phpCAS",
-        "keywords": [
-            "cas",
-            "jasig"
         ]
     }
 ]
