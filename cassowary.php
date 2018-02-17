@@ -29,8 +29,13 @@ if (isset($_REQUEST['logout'])) {
 
 if (!isset($cassowary_all_users)) $cassowary_all_users = false;	
 
-$root = $_SERVER["DOCUMENT_ROOT"];
-$path = realpath($root . $_SERVER["REDIRECT_URL"]);
+$root = isset($_SERVER["CONTEXT_DOCUMENT_ROOT"])
+	? $_SERVER["CONTEXT_DOCUMENT_ROOT"]
+	: $_SERVER["DOCUMENT_ROOT"];
+$subpath = isset($_SERVER["CONTEXT_PREFIX"])
+	? substr($_SERVER["REDIRECT_URL"], strlen($_SERVER["CONTEXT_PREFIX"]))
+	: $_SERVER["REDIRECT_URL"];
+$path = realpath($root . $subpath);
 
 // check that path exists and is a sub-path of root
 
