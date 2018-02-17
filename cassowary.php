@@ -7,6 +7,8 @@
  * @license  http://www.apache.org/licenses/LICENSE-2.0  Apache License 2.0
  */
 
+http_response_code(500);
+
 // Setup
 require_once 'cassowary-setup.php';
 
@@ -37,9 +39,9 @@ $subpath = isset($_SERVER["CONTEXT_PREFIX"])
 	: $_SERVER["REDIRECT_URL"];
 $path = realpath($root . $subpath);
 
-// check that path exists and is a sub-path of root
+// check that path exists, is a sub-path of root, and is a file (not dir)
 
-if ($path !== FALSE && substr($path, 0, strlen($root)) === $root) {
+if ($path !== FALSE && substr($path, 0, strlen($root)) === $root && is_file($path)) {
 
 	$file_contentlength = filesize( $path );
 
@@ -109,6 +111,7 @@ if ($path !== FALSE && substr($path, 0, strlen($root)) === $root) {
 	// Check that the current user is allowed access
 	
 	if ($cassowary_all_users || in_array(strtolower(phpCAS::getUser()), $cassowary_users)) {
+		http_response_code(200);
 		header('Content-Type: ' . $file_contenttype);
 		header("Content-Length: " . $file_contentlength);
 		readfile($path);
