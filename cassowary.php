@@ -45,10 +45,21 @@ if ($path !== FALSE && substr($path, 0, strlen($root)) === $root && is_file($pat
 
 	$file_contentlength = filesize( $path );
 
+	function tree_find($name) {
+		global $root, $path;
+		$dir = dirname($path) . '/';
+		while (strlen($dir) >= strlen($root)) {
+			if (file_exists($dir . $name)) return $dir . $name;
+			$dir = dirname($dir) . '/';
+		}
+		return FALSE;
+	}
+	
 	// Extract additional cassowary-users from .cassowary_users
-	if (file_exists(dirname($path) . '/.cassowary_users')
-	&& $dotfile = file_get_contents(dirname($path) . '/.cassowary_users')) {
-		$cassowary_users  = array_merge($cassowary_users, preg_split("/\s+/", $dotfile));
+	$dot_file = tree_find('.cassowary_users');
+	
+	if ($dot_file && $dot_users = file_get_contents($dot_file)) {
+		$cassowary_users  = array_merge($cassowary_users, preg_split("/\s+/", $dot_users));
 	}
 
 	if (pathinfo($path, PATHINFO_EXTENSION) === "pdf") {
