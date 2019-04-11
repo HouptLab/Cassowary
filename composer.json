@@ -1,4 +1,14 @@
 {
+    "name": "chuckhoupt/cassowary",
+    "description": "A large, flightless, highly territorial, CAS client",
+    "keywords": ["cas", "cassowary"],
+    "homepage": "https://wiki.houptlab.org/wiki/Cassowary",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {"name": "Chuck Houpt", "homepage": "https://habilis.net/chuck/"}
+    ],
+
   "require": {
     "jasig/phpcas": "1.3.*",
     "smalot/pdfparser": "*"
