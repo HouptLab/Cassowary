@@ -1,0 +1,2 @@
+# Use export substitution to burn date info into tarballs.
+LICENSE.txt export-subst
