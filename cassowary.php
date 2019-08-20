@@ -93,8 +93,8 @@ if ($path !== FALSE && substr($path, 0, strlen($root)) === $root && is_file($pat
 	} else {
 		$file_contenttype = "text/html";
 	
-		// Extract additional cassowary-users from meta elements
-		$file = file_get_contents( $path );
+		// Extract additional cassowary-users from meta elements (within first 64 KiB)
+		$file = file_get_contents( $path, FALSE, NULL, 0, 65536);
 	
 		libxml_use_internal_errors(true); // suppress ill-formed HTML warnings
 	
