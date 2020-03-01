@@ -40,7 +40,7 @@ if (phpCAS::isAuthenticated()) {
 	<body>
 		<h1>Logout successful</h1>
 		<p>You have successfully logged out.
-		<P><a href="<?php echo $cassowary_parent ?>/login/">Click here to login to <strong><?php echo $_SERVER["HTTP_HOST"] ?></strong> again</a>
+		<P><a href="<?php echo $cassowary_parent ?>/">Click here to login to <strong><?php echo $_SERVER["HTTP_HOST"] ?></strong> again</a>
 		<p>For security reasons, exit your web browser.
 	</body>
 </html>
