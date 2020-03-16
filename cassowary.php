@@ -121,7 +121,7 @@ if ($path !== FALSE && substr($path, 0, strlen($root)) === $root && is_file($pat
 	
 	// Check that the current user is allowed access
 	
-	if ($cassowary_all_users || in_array(strtolower(phpCAS::getUser()), $cassowary_users)) {
+	if (is_readable($path) && ($cassowary_all_users || in_array(strtolower(phpCAS::getUser()), $cassowary_users))) {
 		http_response_code(200);
 		header('Content-Type: ' . $file_contenttype);
 		header("Content-Length: " . $file_contentlength);
