@@ -15,6 +15,8 @@ $cas_context = '/cas';
 // Port of your CAS server. Normally for a https server it's 443
 $cas_port = 443;
 
+$client_service_name = '{{ site.url | default: "http://localhost:8080"}}';
+
 // Path to the ca chain that issued the cas server certificate
 //$cas_server_ca_cert_path = '/path/to/cachain.pem';
 

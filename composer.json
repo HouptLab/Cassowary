@@ -3,7 +3,7 @@
     "description": "A highly territorial CAS client",
     "type": "library",
     "require": {
-        "jasig/phpcas": "^1.3",
+        "apereo/phpcas": "^1.6",
         "smalot/pdfparser": "^0.11.0"
     },
     "license": "MIT",

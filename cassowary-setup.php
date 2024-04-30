@@ -39,7 +39,7 @@ require_once 'vendor/autoload.php';
 //phpCAS::setDebug();
 
 // Initialize phpCAS
-phpCAS::client(CAS_VERSION_2_0, $cas_host, $cas_port, $cas_context);
+phpCAS::client(CAS_VERSION_2_0, $cas_host, $cas_port, $cas_context, $client_service_name);
 
 if (isset($cas_server_ca_cert_path)) {
 	// For production use set the CA certificate that is the issuer of the cert

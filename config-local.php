@@ -17,6 +17,8 @@ $cas_context = '/cas-server-webapp';
 //$cas_port = 443;
 $cas_port = 8443;
 
+$client_service_name = '{{ site.url | default: "http://localhost:8080"}}';
+
 // Path to the ca chain that issued the cas server certificate
 //$cas_server_ca_cert_path = '/path/to/cachain.pem';
 
